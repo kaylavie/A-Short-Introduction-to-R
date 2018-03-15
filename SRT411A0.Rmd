@@ -1,0 +1,180 @@
+---
+title: "A (very) short introduction to R"
+author: "kaylavie"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+In this document you'll find a short introduction to the R programming language as described in https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf. The code and its output were generated with Rstudio, "R markdown"" and "knitr". 
+
+**1. ToDo 3.1**
+```{r}
+abs((2016-2014)/(2014-1901)*100)
+```
+**2. ToDo 3.2**
+```{r}
+yob = 1901
+start = 2016
+life = 2014 - yob
+school = 2014 - 2016
+abs(school/life) * 100
+```
+**3. ToDo 3.3**
+```{r}
+vec=c(4,5,8,11)
+sum(vec)
+```
+**4. ToDo 3.4**
+```{r}
+x=rnorm(100)
+plot(x)
+```
+**5. ToDo 4**
+```{r}
+help(sqrt)
+```
+
+```{r,eval=FALSE}
+f <- function(x) {
+  # code would go here...
+}
+```
+**6. ToDo 5**  
+
+File > New File > RScript > Save > firstscript.R
+
+```{r}
+w=rnorm(100)
+plot(w)
+```
+
+Run the script several times:  
+
+ > source("firstscript.R")  
+ > source("firstscript.R")  
+ > source("firstscript.R")  
+ > source("firstscript.R")   
+
+Each run produces a different graph.
+```{r}
+
+```
+**7. ToDo 6.2**
+```{r}
+P = seq(from=31, to = 60, by = 1)
+Q = matrix(data=P, ncol=5, nrow=6)
+```
+**8. ToDo 6.3**  
+File > New File > RScript > Save > dataframe.R 
+```{r}
+x1 = c(rnorm(100))  
+x2 = c(rnorm(100))
+x3 = c(rnorm(100))
+
+t = data.frame(a=x1, b=x1+x2, c= x1+x2+x3)
+plot(t)
+sd(as.numeric(as.matrix(t)))
+```
+
+Run the script several times:  
+
+ > source("dataframe.R")  
+ > source("dataframe.R")  
+ > source("dataframe.R")  
+ > source("dataframe.R") 
+ 
+Each run produces a different graph.  
+```{r}
+
+```
+**9. ToDo 7**  
+* append the following to dataframe.R
+```{r}
+plot(t$a, type="l", ylim=range(t),lwd=3, col=rgb(1,0,0,0.3))
+lines(t$b, type="s", lwd=2, col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4,col=rgb(0,0,1,0.3))
+
+```
+**10. ToDo 8**
+    
+File > New File > Text File > Save > kay.txt  
+a g x  
+1 2 3  
+2 4 6  
+4 8 12  
+8 16 24  
+32 64 96  
+```{r,echo=FALSE}
+
+```
+File > New File > RScript > Save > readfile.R  
+
+ > var1 = read.table(file="kay.txt",  > header=TRUE)  
+ > g = as.matrix(var1[,2])*5  
+ > write.table(g, file="kay2.txt")  
+```{r}
+
+```
+**11. ToDo 9**
+```{r}
+mean(sqrt(rnorm(100)))
+```
+**12. ToDo 10.2**
+```{r}
+presents = c(8, 16, 12)
+date = strptime(c("20180224203000", "20181224000000", "20180830000000"), format="%Y%m%d%H%M%S")
+plot(date, presents)
+```
+**13. ToDo 11.2**
+```{r}
+vect = seq(from=1, to=100)
+s = c()
+for (i in 1:length(vect))
+{
+  if (vect[i] <= 5)
+  {
+     s[i] = vect[i] * 10
+  }
+  else if (vect[i] >= 90)
+  {
+    s[i] = vect[i] * 10
+  }
+  else
+  {
+    s[i] = vect[i] * 0.1
+  }
+}
+s
+```
+**14. ToDo 11.3**
+```{r}
+funckay = function(vect)
+{
+     s = c()
+    for (i in 1:length(vect))
+    {
+        if (vect[i] <= 5)
+        {
+            s[i] = vect[i] * 10
+        }
+        else if (vect[i] >= 90)
+        {
+            s[i] = vect[i] * 10
+        }
+        else
+        {
+            s[i] = vect[i] * 0.1
+        }
+    }
+    return (s) 
+}
+```
+
+```{r}
+funckay(vect)
+```
+**15. One More Thing ToDo**  
+```{r}
+c(vect[1:5]*10,vect[6:89]*0.1,vect[90:100]*10)
+```
